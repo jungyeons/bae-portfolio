@@ -101,13 +101,13 @@ export default function ContactSection() {
               {[
                 {
                   label: "EMAIL",
-                  value: "baejungyeon00@gmail.com",
-                  href: "mailto:baejungyeon00@gmail.com",
+                  value: "qowjdduswkd@naver.com",
+                  href: "mailto:qowjdduswkd@naver.com",
                 },
                 {
                   label: "GITHUB",
-                  value: "github.com/baejungyeon",
-                  href: "https://github.com/baejungyeon",
+                  value: "github.com/jungyeons",
+                  href: "https://github.com/jungyeons",
                 },
               ].map(({ label, value, href }) => (
                 <div key={label}>

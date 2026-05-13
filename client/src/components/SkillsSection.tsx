@@ -22,6 +22,7 @@ const skillCategories = [
       "Java 11/17", "Spring Framework", "Spring Boot", "Spring MVC",
       "Spring Security", "JPA", "Hibernate", "QueryDSL", "RMI",
     ],
+    highlight: true,
   },
   {
     category: "Frontend",
@@ -30,6 +31,7 @@ const skillCategories = [
       "React", "React Native", "Redux", "Expo",
       "HTML5", "CSS3", "JavaScript (ES6+)", "JSP", "Thymeleaf",
     ],
+    highlight: true,
   },
   {
     category: "Infra & DevOps",
@@ -38,6 +40,7 @@ const skillCategories = [
       "AWS EC2", "S3", "RDS", "ALB", "Auto Scaling",
       "Docker", "GitHub Actions", "Nginx", "Jenkins", "Ubuntu Server",
     ],
+    highlight: true,
   },
   {
     category: "Database",
@@ -45,6 +48,7 @@ const skillCategories = [
     skills: [
       "MySQL", "Oracle SQL", "Redis (캐싱 전략)", "MongoDB", "ERD 설계",
     ],
+    highlight: true,
   },
   {
     category: "AI & Data",
@@ -53,11 +57,13 @@ const skillCategories = [
       "Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib",
       "DBSCAN", "K-Means", "Fuzzy Clustering", "LightGBM", "PyTorch",
     ],
+    highlight: true,
   },
   {
     category: "Message Queue",
     icon: "⇄",
     skills: ["Apache Kafka", "비동기 메시지 처리", "스트림 처리"],
+    highlight: true,
   },
   {
     category: "Tools & Testing",
@@ -66,6 +72,7 @@ const skillCategories = [
       "Git", "GitHub", "GitLab", "Jira", "Notion", "Postman",
       "Figma", "Enterprise Architect", "JUnit 5", "Mockito", "Swagger",
     ],
+    highlight: true,
   },
   {
     category: "System",
@@ -74,6 +81,7 @@ const skillCategories = [
       "Linux 기반 배포", "운영체제 구현 (Java)", "Shell 기반 시스템 분석",
       "파일 권한 관리", "계정 관리",
     ],
+    highlight: true,
   },
 ];
 
