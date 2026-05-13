@@ -97,7 +97,7 @@ export default function HeroSection() {
               }}
             >
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#3B5BDB", display: "inline-block" }} />
-              SECURITY ENGINEER
+              DEVELOPER & SECURITY ENGINEER
             </span>
           </div>
 
@@ -143,9 +143,9 @@ export default function HeroSection() {
               marginBottom: "2.5rem",
             }}
           >
-            탄탄한 개발 실력을 갖춘 보안 엔지니어.<br />
-            웹·모바일·클라우드 취약점 분석부터<br />
-            인프라 구축까지 폭넓은 경험을 보유하고 있습니다.
+          개발과 보안, 두 가지를 모두 갖춘 엔지니어.<br />
+          백엔드 개발부터 인프라 구축, 보안 취약점 분석까지<br />
+          폭넓은 기술 스택으로 문제를 해결합니다.
           </p>
 
           {/* CTA */}
@@ -264,7 +264,7 @@ export default function HeroSection() {
                 boxShadow: "0 4px 12px rgba(59,91,219,0.35)",
               }}
             >
-              Security Engineer
+              Developer & Security
             </div>
           </div>
         </div>

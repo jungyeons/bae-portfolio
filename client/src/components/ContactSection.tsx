@@ -100,7 +100,7 @@ export default function ContactSection() {
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2rem" }}>
                   {[
-                    { label: "직군", value: "보안 엔지니어" },
+                    { label: "직군", value: "백엔드 개발 / 보안 엔지니어" },
                     { label: "학력", value: "명지대 융합소프트웨어학부 졸업" },
                     { label: "자격증", value: "정보처리기사, SQLD" },
                     { label: "수상", value: "장려상 1, 우수상 2" },
@@ -114,7 +114,7 @@ export default function ContactSection() {
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: "1.25rem" }}>
                   <div style={{ fontFamily: "'Pretendard Variable', Pretendard, sans-serif", fontSize: "0.78rem", color: "rgba(255,255,255,0.6)", marginBottom: "0.5rem" }}>핵심 역량</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                    {["보안 취약점 분석", "Spring Boot", "AWS/Docker", "CI/CD", "AI 통합"].map((tag) => (
+                    {["백엔드 개발", "보안 취약점 분석", "AWS/Docker", "CI/CD", "AI 통합"].map((tag) => (
                       <span key={tag} style={{
                         fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
                         fontSize: "0.72rem",
