@@ -32,8 +32,9 @@ const experiences = [
 ];
 
 const awards = [
-  "2023 벤처 스타트업 아카데미 (SW/컨텐츠 분야) — 우수상",
-  "2023 중소벤처기업부 벤처스타트업 아카데미 사업 소감문 경진대회 — 우수상",
+  "SK쉴더스 클라우드/보안 전문가 양성 캠프 3기 최종 프로젝트 — 장려상 (2026)",
+  "2023 벤처 스타트업 아카데미 (SW/컨텐츠 분야) — 우수상 (2024)",
+  "2023 중소벤처기업부 벤처스타트업 아카데미 소감문 경진대회 — 우수상 (2024)",
 ];
 
 const certs = {
@@ -91,6 +92,63 @@ export default function AboutSection() {
           />
         </div>
 
+        {/* Profile photo + two-column layout */}
+        {/* Profile image row */}
+        <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", marginBottom: "4rem", flexWrap: "wrap" }}>
+          <div style={{ flexShrink: 0 }}>
+            <div
+              style={{
+                width: "160px",
+                height: "200px",
+                overflow: "hidden",
+                border: "1px solid rgba(0,229,255,0.25)",
+                position: "relative",
+              }}
+            >
+              <img
+                src="/manus-storage/profile_98448890.webp"
+                alt="배정연 프로필"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  filter: "grayscale(20%)",
+                }}
+              />
+              {/* Cyan overlay accent */}
+              <div style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "3px",
+                background: "#00E5FF",
+              }} />
+            </div>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "0.6rem",
+              color: "rgba(0,229,255,0.5)",
+              letterSpacing: "0.15em",
+              marginTop: "0.6rem",
+              textAlign: "center",
+            }}>BAE JUNG YEON</div>
+          </div>
+          <div style={{ flex: 1, minWidth: "240px" }}>
+            <p style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "1.05rem",
+              color: "rgba(240,237,232,0.75)",
+              lineHeight: 1.8,
+              margin: 0,
+            }}>
+              명지대 융합소프트웨어학부를 졸업하고 보안과 개발 양쪽에 깊이 있는 역량을 쌓아온 엔지니어입니다.
+              웹·모바일·클라우드 취약점 분석부터 백엔드 개발, 인프라 구축까지 폭넓은 경험을 보유하고 있습니다.
+            </p>
+          </div>
+        </div>
+
         {/* Two-column layout */}
         <div
           style={{
@@ -102,18 +160,6 @@ export default function AboutSection() {
         >
           {/* Left: Bio + Awards + Certs */}
           <div ref={leftRef} className="reveal">
-            <p
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "1.05rem",
-                color: "rgba(240,237,232,0.75)",
-                lineHeight: 1.8,
-                marginBottom: "3rem",
-              }}
-            >
-              명지대 융합소프트웨어학부를 졸업하고 보안과 개발 양쪽에 깊이 있는 역량을 쌓아온 엔지니어입니다.
-              웹·모바일·클라우드 취약점 분석부터 백엔드 개발, 인프라 구축까지 폭넓은 경험을 보유하고 있습니다.
-            </p>
 
             {/* Education */}
             <div style={{ marginBottom: "2.5rem" }}>
