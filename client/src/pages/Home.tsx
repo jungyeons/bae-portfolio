@@ -1,8 +1,8 @@
-/* Home.tsx — Dark Brutalism Portfolio
- * Design: Bebas Neue display, Space Grotesk body, JetBrains Mono mono
- * Colors: #0A0A0A bg, #F0EDE8 text, #00E5FF accent
- * Layout: Fixed left nav, full-width sections
+/* Home.tsx — Clean Professional Light Portfolio
+ * Design: Pretendard Variable 폰트, 인디고 블루 강조색
+ * Background: #F8F9FC / #FFFFFF 교차
  */
+import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -12,66 +12,41 @@ import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
-    <div
-      style={{
-        background: "#0A0A0A",
-        color: "#F0EDE8",
-        minHeight: "100vh",
-      }}
-    >
+    <div style={{ background: "#F8F9FC", color: "#1A1D2E", minHeight: "100vh" }}>
       <Navigation />
-
-      {/* Main content with left padding for desktop nav */}
-      <main style={{ paddingLeft: "0" }}>
+      <ScrollProgress />
+      <main>
         <HeroSection />
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
         <ContactSection />
       </main>
-
-      {/* Scroll progress bar */}
-      <ScrollProgress />
     </div>
   );
 }
 
 function ScrollProgress() {
   const [progress, setProgress] = useState(0);
-
   useEffect(() => {
-    const handleScroll = () => {
+    const handle = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handle, { passive: true });
+    return () => window.removeEventListener("scroll", handle);
   }, []);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "2px",
-        background: "rgba(255,255,255,0.05)",
-        zIndex: 100,
-      }}
-    >
-      <div
-        style={{
-          height: "100%",
-          width: `${progress}%`,
-          background: "#00E5FF",
-          transition: "width 0.1s linear",
-          boxShadow: "0 0 8px rgba(0,229,255,0.6)",
-        }}
-      />
+    <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: "3px", background: "#E9ECEF", zIndex: 200 }}>
+      <div style={{
+        height: "100%",
+        width: `${progress}%`,
+        background: "linear-gradient(to right, #3B5BDB, #4263EB)",
+        transition: "width 0.1s linear",
+        boxShadow: "0 0 6px rgba(59,91,219,0.4)",
+      }} />
     </div>
   );
 }
-
-import { useState, useEffect } from "react";

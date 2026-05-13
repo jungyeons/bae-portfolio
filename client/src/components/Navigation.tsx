@@ -1,15 +1,15 @@
-/* Navigation — Dark Brutalism style
- * Fixed left sidebar on desktop, top bar on mobile
- * Active section tracking via IntersectionObserver
+/* Navigation — Clean Professional Light
+ * 상단 고정 네비게이션, 스크롤 시 배경 blur
+ * Pretendard 폰트 기반
  */
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { id: "hero", label: "HOME" },
-  { id: "about", label: "ABOUT" },
-  { id: "skills", label: "SKILLS" },
-  { id: "projects", label: "PROJECTS" },
-  { id: "contact", label: "CONTACT" },
+  { id: "hero", label: "홈" },
+  { id: "about", label: "소개" },
+  { id: "skills", label: "기술 스택" },
+  { id: "projects", label: "프로젝트" },
+  { id: "contact", label: "연락처" },
 ];
 
 export default function Navigation() {
@@ -18,9 +18,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -31,9 +29,7 @@ export default function Navigation() {
       const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
         { threshold: 0.3, rootMargin: "-10% 0px -60% 0px" }
       );
       obs.observe(el);
@@ -43,55 +39,155 @@ export default function Navigation() {
   }, []);
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setMobileOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
 
   return (
-    <>
-      {/* Desktop: Fixed left vertical nav */}
-      <nav className="fixed left-0 top-0 h-full z-50 hidden lg:flex flex-col items-center justify-between py-10 px-6 w-20">
-        {/* Logo mark */}
-        <div
-          className="cursor-pointer"
+    <nav
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid #E9ECEF" : "none",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 2rem",
+          height: "64px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Logo */}
+        <button
           onClick={() => scrollTo("hero")}
+          style={{
+            fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+            fontWeight: 700,
+            fontSize: "1.1rem",
+            color: "#3B5BDB",
+            background: "none",
+            border: "none",
+            letterSpacing: "-0.01em",
+          }}
         >
-          <div
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "1.1rem",
-              color: "#00E5FF",
-              letterSpacing: "0.1em",
-              writingMode: "vertical-rl",
-              textOrientation: "mixed",
-              transform: "rotate(180deg)",
-            }}
-          >
-            JYB
-          </div>
-        </div>
+          배정연
+        </button>
 
-        {/* Nav items */}
-        <div className="flex flex-col items-center gap-8">
+        {/* Desktop nav */}
+        <div
+          className="hidden lg:flex"
+          style={{ gap: "0.25rem", alignItems: "center" }}
+        >
           {navItems.map(({ id, label }) => (
             <button
               key={id}
               onClick={() => scrollTo(id)}
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.6rem",
-                letterSpacing: "0.2em",
-                writingMode: "vertical-rl",
-                textOrientation: "mixed",
-                transform: "rotate(180deg)",
-                color: activeSection === id ? "#00E5FF" : "rgba(240,237,232,0.35)",
-                transition: "color 0.2s ease",
+                fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                fontWeight: activeSection === id ? 600 : 400,
+                fontSize: "0.9rem",
+                color: activeSection === id ? "#3B5BDB" : "#495057",
+                background: activeSection === id ? "#EEF2FF" : "none",
+                border: "none",
+                padding: "0.45rem 0.9rem",
+                borderRadius: "6px",
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+              }}
+              onMouseEnter={(e) => {
+                if (activeSection !== id) {
+                  (e.currentTarget as HTMLButtonElement).style.background = "#F8F9FC";
+                  (e.currentTarget as HTMLButtonElement).style.color = "#3B5BDB";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeSection !== id) {
+                  (e.currentTarget as HTMLButtonElement).style.background = "none";
+                  (e.currentTarget as HTMLButtonElement).style.color = "#495057";
+                }
+              }}
+            >
+              {label}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollTo("contact")}
+            className="btn-primary"
+            style={{ marginLeft: "0.75rem", padding: "0.5rem 1.25rem", fontSize: "0.85rem" }}
+          >
+            연락하기
+          </button>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="lg:hidden"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          style={{ background: "none", border: "none", padding: "0.5rem", color: "#1A1D2E" }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px", width: "22px" }}>
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  display: "block",
+                  height: "2px",
+                  background: "#1A1D2E",
+                  borderRadius: "2px",
+                  transition: "all 0.2s ease",
+                  transform: mobileOpen
+                    ? i === 0 ? "rotate(45deg) translate(5px, 5px)"
+                    : i === 2 ? "rotate(-45deg) translate(5px, -5px)"
+                    : "none"
+                    : "none",
+                  opacity: mobileOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          style={{
+            background: "#ffffff",
+            borderTop: "1px solid #E9ECEF",
+            padding: "1rem 2rem 1.5rem",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+          }}
+        >
+          {navItems.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              style={{
+                display: "block",
+                width: "100%",
+                textAlign: "left",
+                fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                fontWeight: activeSection === id ? 600 : 400,
+                fontSize: "0.95rem",
+                color: activeSection === id ? "#3B5BDB" : "#495057",
+                padding: "0.75rem 0",
+                borderBottom: "1px solid #F1F3F5",
                 background: "none",
                 border: "none",
-                padding: "0",
+                borderBottomWidth: "1px",
+                borderBottomStyle: "solid",
+                borderBottomColor: "#F1F3F5",
                 cursor: "pointer",
               }}
             >
@@ -99,111 +195,7 @@ export default function Navigation() {
             </button>
           ))}
         </div>
-
-        {/* Bottom line */}
-        <div
-          style={{
-            width: "1px",
-            height: "60px",
-            background: "linear-gradient(to bottom, rgba(0,229,255,0.5), transparent)",
-          }}
-        />
-      </nav>
-
-      {/* Mobile: Top bar */}
-      <nav
-        className="fixed top-0 left-0 right-0 z-50 lg:hidden"
-        style={{
-          background: scrolled ? "rgba(10,10,10,0.95)" : "transparent",
-          backdropFilter: scrolled ? "blur(10px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "none",
-          transition: "all 0.3s ease",
-        }}
-      >
-        <div className="flex items-center justify-between px-6 py-4">
-          <span
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "1.2rem",
-              color: "#00E5FF",
-              letterSpacing: "0.1em",
-            }}
-          >
-            JYB
-          </span>
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: "#F0EDE8", background: "none", border: "none" }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: "5px", width: "22px" }}>
-              <span
-                style={{
-                  display: "block",
-                  height: "1px",
-                  background: mobileOpen ? "#00E5FF" : "#F0EDE8",
-                  transform: mobileOpen ? "rotate(45deg) translate(4px, 4px)" : "none",
-                  transition: "all 0.2s ease",
-                }}
-              />
-              <span
-                style={{
-                  display: "block",
-                  height: "1px",
-                  background: "#F0EDE8",
-                  opacity: mobileOpen ? 0 : 1,
-                  transition: "opacity 0.2s ease",
-                }}
-              />
-              <span
-                style={{
-                  display: "block",
-                  height: "1px",
-                  background: mobileOpen ? "#00E5FF" : "#F0EDE8",
-                  transform: mobileOpen ? "rotate(-45deg) translate(4px, -4px)" : "none",
-                  transition: "all 0.2s ease",
-                }}
-              />
-            </div>
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div
-            style={{
-              background: "rgba(10,10,10,0.98)",
-              borderTop: "1px solid rgba(255,255,255,0.08)",
-              padding: "1.5rem 1.5rem",
-            }}
-          >
-            {navItems.map(({ id, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                style={{
-                  display: "block",
-                  width: "100%",
-                  textAlign: "left",
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.2em",
-                  color: activeSection === id ? "#00E5FF" : "rgba(240,237,232,0.6)",
-                  padding: "0.75rem 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
-                  background: "none",
-                  border: "none",
-                  borderBottomWidth: "1px",
-                  borderBottomStyle: "solid",
-                  borderBottomColor: "rgba(255,255,255,0.05)",
-                  cursor: "pointer",
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        )}
-      </nav>
-    </>
+      )}
+    </nav>
   );
 }

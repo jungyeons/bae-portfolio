@@ -1,259 +1,272 @@
-/* HeroSection — Dark Brutalism
- * Full-viewport hero with oversized typography
- * Animated entrance with clip-path reveal
+/* HeroSection — Clean Professional Light
+ * 좌측 텍스트 + 우측 프로필 사진
+ * Pretendard Variable 폰트
  */
 import { useEffect, useState } from "react";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663648231466/5XNBhSTJDxWGqcgWLgFEiq/hero_bg-WaMSz7LZHPtt7TWBPDZw3x.webp";
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663648231466/5XNBhSTJDxWGqcgWLgFEiq/hero_light-DjvwU86UQqZ7dBLqf9FFJW.webp";
+const PROFILE_IMG = "/manus-storage/profile_98448890.webp";
+
+const stats = [
+  { num: "11+", label: "프로젝트" },
+  { num: "3", label: "수상" },
+  { num: "2", label: "자격증" },
+  { num: "2026", label: "취업 준비 중" },
+];
 
 export default function HeroSection() {
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 100);
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setLoaded(true), 80);
+    return () => clearTimeout(t);
   }, []);
+
+  const fade = (delay: number) => ({
+    opacity: loaded ? 1 : 0,
+    transform: loaded ? "translateY(0)" : "translateY(20px)",
+    transition: `opacity 0.7s ease ${delay}s, transform 0.7s cubic-bezier(0.23,1,0.32,1) ${delay}s`,
+  });
 
   return (
     <section
       id="hero"
       style={{
-        position: "relative",
         minHeight: "100vh",
+        background: "#F8F9FC",
+        position: "relative",
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        background: "#0A0A0A",
       }}
     >
-      {/* Background image */}
+      {/* Background image (right side) */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage: `url(${HERO_BG})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.35,
+          backgroundPosition: "center right",
+          opacity: 0.7,
           zIndex: 0,
         }}
       />
-
-      {/* Gradient overlay */}
+      {/* Left fade overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,10,0.95) 40%, rgba(10,10,10,0.5) 100%)",
+          background: "linear-gradient(to right, #F8F9FC 45%, rgba(248,249,252,0.3) 75%, transparent 100%)",
           zIndex: 1,
         }}
       />
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: "200px",
-          background: "linear-gradient(to top, #0A0A0A, transparent)",
-          zIndex: 2,
-        }}
-      />
 
-      {/* Content */}
       <div
-        className="container"
         style={{
           position: "relative",
-          zIndex: 3,
-          paddingLeft: "7rem",
-          paddingTop: "2rem",
+          zIndex: 2,
+          width: "100%",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 4rem",
+          paddingTop: "80px",
+          display: "grid",
+          gridTemplateColumns: "1fr auto",
+          gap: "4rem",
+          alignItems: "center",
         }}
       >
-        {/* Pre-title */}
-        <div
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.75rem",
-            letterSpacing: "0.25em",
-            color: "#00E5FF",
-            marginBottom: "1.5rem",
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
-          }}
-        >
-          SECURITY ENGINEER
-        </div>
+        {/* Left: Text content */}
+        <div>
+          {/* Badge */}
+          <div style={{ ...fade(0.1), marginBottom: "1.25rem" }}>
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                background: "#EEF2FF",
+                color: "#3B5BDB",
+                fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                fontWeight: 600,
+                fontSize: "0.78rem",
+                letterSpacing: "0.06em",
+                padding: "0.35rem 0.85rem",
+                borderRadius: "20px",
+                border: "1px solid rgba(59,91,219,0.2)",
+              }}
+            >
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#3B5BDB", display: "inline-block" }} />
+              SECURITY ENGINEER
+            </span>
+          </div>
 
-        {/* Main name */}
-        <div
-          style={{
-            overflow: "hidden",
-            marginBottom: "0.5rem",
-          }}
-        >
+          {/* Name */}
           <h1
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(4rem, 12vw, 11rem)",
-              lineHeight: 0.9,
-              color: "#F0EDE8",
-              letterSpacing: "0.02em",
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(100%)",
-              transition: "opacity 0.8s ease 0.3s, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.3s",
-              margin: 0,
+              ...fade(0.2),
+              fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(2.8rem, 6vw, 5rem)",
+              color: "#1A1D2E",
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              margin: "0 0 0.5rem",
             }}
           >
-            JUNG YEON
+            배정연
           </h1>
-        </div>
-        <div style={{ overflow: "hidden", marginBottom: "2.5rem" }}>
-          <h1
+          <h2
             style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              fontSize: "clamp(4rem, 12vw, 11rem)",
-              lineHeight: 0.9,
-              color: "#00E5FF",
-              letterSpacing: "0.02em",
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(100%)",
-              transition: "opacity 0.8s ease 0.45s, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.45s",
-              margin: 0,
+              ...fade(0.3),
+              fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+              fontWeight: 400,
+              fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
+              color: "#3B5BDB",
+              letterSpacing: "-0.01em",
+              margin: "0 0 1.75rem",
             }}
           >
-            BAE
-          </h1>
+            Jung Yeon Bae
+          </h2>
+
+          {/* Tagline */}
+          <p
+            style={{
+              ...fade(0.4),
+              fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+              fontWeight: 400,
+              fontSize: "1.05rem",
+              color: "#495057",
+              lineHeight: 1.85,
+              maxWidth: "480px",
+              marginBottom: "2.5rem",
+            }}
+          >
+            탄탄한 개발 실력을 갖춘 보안 엔지니어.<br />
+            웹·모바일·클라우드 취약점 분석부터<br />
+            인프라 구축까지 폭넓은 경험을 보유하고 있습니다.
+          </p>
+
+          {/* CTA */}
+          <div style={{ ...fade(0.5), display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3.5rem" }}>
+            <button
+              className="btn-primary"
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              프로젝트 보기
+            </button>
+            <button
+              className="btn-outline"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              연락하기
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div style={{ ...fade(0.65), display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
+            {stats.map(({ num, label }) => (
+              <div key={label}>
+                <div
+                  style={{
+                    fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                    fontWeight: 800,
+                    fontSize: "1.75rem",
+                    color: "#3B5BDB",
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {num}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                    fontSize: "0.78rem",
+                    color: "#868E96",
+                    marginTop: "0.3rem",
+                    fontWeight: 400,
+                  }}
+                >
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Tagline */}
-        <p
-          style={{
-            fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
-            color: "rgba(240,237,232,0.65)",
-            maxWidth: "480px",
-            lineHeight: 1.7,
-            marginBottom: "3rem",
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s",
-          }}
-        >
-          탄탄한 개발 실력을 갖춘 보안 엔지니어.
-          <br />
-          웹·모바일·클라우드 취약점 분석부터 인프라 구축까지.
-        </p>
-
-        {/* CTA buttons */}
+        {/* Right: Profile photo */}
         <div
           style={{
-            display: "flex",
-            gap: "1.5rem",
-            flexWrap: "wrap",
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s",
+            ...fade(0.35),
+            flexShrink: 0,
           }}
+          className="hidden lg:block"
         >
-          <button
-            onClick={() => {
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-            }}
+          <div
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.15em",
-              padding: "0.85rem 2rem",
-              background: "#00E5FF",
-              color: "#0A0A0A",
-              border: "none",
-              cursor: "pointer",
-              fontWeight: 700,
-              transition: "transform 0.15s ease, box-shadow 0.15s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.target as HTMLButtonElement).style.transform = "translateY(-2px)";
-              (e.target as HTMLButtonElement).style.boxShadow = "0 8px 25px rgba(0,229,255,0.4)";
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLButtonElement).style.transform = "translateY(0)";
-              (e.target as HTMLButtonElement).style.boxShadow = "none";
+              position: "relative",
+              width: "260px",
             }}
           >
-            VIEW PROJECTS
-          </button>
-          <button
-            onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.15em",
-              padding: "0.85rem 2rem",
-              background: "transparent",
-              color: "#F0EDE8",
-              border: "1px solid rgba(240,237,232,0.3)",
-              cursor: "pointer",
-              fontWeight: 500,
-              transition: "border-color 0.2s ease, color 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              (e.target as HTMLButtonElement).style.borderColor = "#00E5FF";
-              (e.target as HTMLButtonElement).style.color = "#00E5FF";
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLButtonElement).style.borderColor = "rgba(240,237,232,0.3)";
-              (e.target as HTMLButtonElement).style.color = "#F0EDE8";
-            }}
-          >
-            CONTACT
-          </button>
-        </div>
-
-        {/* Stats row */}
-        <div
-          style={{
-            display: "flex",
-            gap: "3rem",
-            marginTop: "5rem",
-            flexWrap: "wrap",
-            opacity: loaded ? 1 : 0,
-            transition: "opacity 0.6s ease 1.1s",
-          }}
-        >
-          {[
-            { num: "11+", label: "Projects" },
-            { num: "2", label: "Certifications" },
-            { num: "2", label: "Awards" },
-            { num: "2026", label: "Available" },
-          ].map(({ num, label }) => (
-            <div key={label}>
-              <div
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "2rem",
-                  color: "#00E5FF",
-                  lineHeight: 1,
-                }}
-              >
-                {num}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: "0.65rem",
-                  color: "rgba(240,237,232,0.4)",
-                  letterSpacing: "0.15em",
-                  marginTop: "0.25rem",
-                }}
-              >
-                {label}
-              </div>
+            {/* Decorative ring */}
+            <div
+              style={{
+                position: "absolute",
+                inset: "-12px",
+                borderRadius: "50%",
+                border: "2px solid rgba(59,91,219,0.15)",
+                zIndex: 0,
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: "-24px",
+                borderRadius: "50%",
+                border: "1px solid rgba(59,91,219,0.07)",
+                zIndex: 0,
+              }}
+            />
+            <img
+              src={PROFILE_IMG}
+              alt="배정연 프로필"
+              style={{
+                width: "260px",
+                height: "320px",
+                objectFit: "cover",
+                objectPosition: "center top",
+                borderRadius: "16px",
+                boxShadow: "0 20px 60px rgba(59,91,219,0.18), 0 8px 24px rgba(0,0,0,0.08)",
+                position: "relative",
+                zIndex: 1,
+                border: "3px solid #ffffff",
+              }}
+            />
+            {/* Badge overlay */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: "-14px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                background: "#3B5BDB",
+                color: "#ffffff",
+                fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+                fontWeight: 700,
+                fontSize: "0.72rem",
+                letterSpacing: "0.08em",
+                padding: "0.4rem 1rem",
+                borderRadius: "20px",
+                whiteSpace: "nowrap",
+                zIndex: 2,
+                boxShadow: "0 4px 12px rgba(59,91,219,0.35)",
+              }}
+            >
+              Security Engineer
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
@@ -261,24 +274,24 @@ export default function HeroSection() {
       <div
         style={{
           position: "absolute",
-          bottom: "2.5rem",
-          right: "3rem",
+          bottom: "2rem",
+          left: "50%",
+          transform: "translateX(-50%)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "0.5rem",
+          gap: "0.4rem",
           zIndex: 3,
           opacity: loaded ? 0.5 : 0,
-          transition: "opacity 0.6s ease 1.3s",
+          transition: "opacity 0.6s ease 1.2s",
         }}
       >
         <span
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.6rem",
-            letterSpacing: "0.2em",
-            color: "rgba(240,237,232,0.5)",
-            writingMode: "vertical-rl",
+            fontFamily: "'Pretendard Variable', Pretendard, sans-serif",
+            fontSize: "0.65rem",
+            letterSpacing: "0.15em",
+            color: "#868E96",
           }}
         >
           SCROLL
@@ -286,18 +299,24 @@ export default function HeroSection() {
         <div
           style={{
             width: "1px",
-            height: "50px",
-            background: "linear-gradient(to bottom, rgba(0,229,255,0.6), transparent)",
-            animation: "scrollLine 2s ease-in-out infinite",
+            height: "40px",
+            background: "linear-gradient(to bottom, #3B5BDB, transparent)",
+            animation: "scrollPulse 2s ease-in-out infinite",
           }}
         />
       </div>
 
       <style>{`
-        @keyframes scrollLine {
+        @keyframes scrollPulse {
           0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
           50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
           100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+        }
+        @media (max-width: 1024px) {
+          #hero > div:nth-child(3) {
+            grid-template-columns: 1fr !important;
+            padding: 0 1.5rem !important;
+          }
         }
       `}</style>
     </section>
