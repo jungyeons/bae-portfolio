@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663648231466/5XNBhSTJDxWGqcgWLgFEiq/hero_light-DjvwU86UQqZ7dBLqf9FFJW.webp";
-const PROFILE_IMG = "/manus-storage/profile_98448890.webp";
+const PROFILE_IMG = "/profile_98448890.webp";
 
 const stats = [
   { num: "11+", label: "프로젝트" },
