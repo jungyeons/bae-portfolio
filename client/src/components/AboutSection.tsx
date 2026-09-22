@@ -18,8 +18,8 @@ const awards = [
 ];
 
 const certs = {
-  done: ["정보처리기사", "SQLD (SQL 개발자)"],
-  inProgress: ["네트워크관리사 2급 필기 합격", "리눅스마스터 2급 1차 합격"],
+  done: ["정보처리기사", "SQLD (SQL 개발자)", "네트워크관리사 2급"],
+  inProgress: ["리눅스마스터 2급 1차 합격"],
 };
 
 export default function AboutSection() {
