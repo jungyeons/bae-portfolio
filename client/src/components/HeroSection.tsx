@@ -10,7 +10,7 @@ const PROFILE_IMG = "/profile_98448890.webp";
 const stats = [
   { num: "11+", label: "프로젝트" },
   { num: "3", label: "수상" },
-  { num: "2", label: "자격증" },
+  { num: "3", label: "자격증" },
   { num: "2026", label: "취업 준비 중" },
 ];
 
