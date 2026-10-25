@@ -4,9 +4,10 @@
 import { useReveal } from "@/hooks/useReveal";
 
 const experiences = [
-  { period: "2025.11 — 2026.04", title: "SK쉴더스 클라우드&보안 전문가 양성 캠프", desc: "SQL Injection, XSS 등 주요 공격 분석 및 대응 방안 도출. AWS, 쿠버네티스, 네트워크 실습을 통한 인프라 역량 강화." },
-  { period: "2024.12 — 2025.06", title: "남궁성의 백엔드 개발 부트캠프", desc: "Spring-MyBatis / SpringBoot-JPA CRUD 학습. 운영체제, SQL, 디자인패턴 심화 학습." },
-  { period: "2025.03 — 2025.06", title: "부동산 매물 추천 플랫폼 ZOOP", desc: "AWS EC2·Docker·GitHub Actions 기반 인프라 구축. Nginx SSL 무중단 배포 환경 설계·운영." },
+  { period: "2025.11 — 2026.04", title: "SK쉴더스 클라우드&보안 전문가 양성 캠프 (640시간)", desc: "Linux, 네트워크, AWS, Docker, Kubernetes 실습과 웹, 모바일 취약점 분석. 최종 프로젝트 통합 모의해킹 팀장 (장려상)." },
+  { period: "2025.10 — 2025.11", title: "한국정보보호산업협회 온택트 융합보안 교육 (40시간)", desc: "AI보안, IoT 해킹과 대응, 접근통제 및 인증 학습." },
+  { period: "2025.03 — 2025.06", title: "부동산 매물 추천 플랫폼 ZOOP", desc: "AWS EC2, Docker, GitHub Actions 기반 인프라 구축. Nginx SSL과 헬스체크 기반 무중단 배포 운영." },
+  { period: "2024.12 — 2025.06", title: "커널아카데미 백엔드 개발 부트캠프 (883시간)", desc: "Spring MyBatis, Spring Boot JPA 기반 웹 서비스 개발. 운영체제, SQL, 디자인패턴 학습." },
   { period: "2023.03 — 2024.02", title: "2023 중소벤처기업부 SW 아카데미", desc: "액자 판매 기업과 협업하여 웹사이트 제작. 보닥 보험 데이터 기반 맞춤형 보험 추천 시스템 구현." },
   { period: "2022.09 — 2022.11", title: "MapleStory Super Hackathon", desc: "넥슨 해커톤 개발 트랙 선발. Lua 언어로 메이플스토리 월드 슈팅 게임 제작 및 수료." },
 ];
@@ -14,12 +15,11 @@ const experiences = [
 const awards = [
   { title: "SK쉴더스 생성형 AI를 활용한 클라우드/보안 전문가 양성 캠프 3기 최종 프로젝트", award: "장려상", year: "2026" },
   { title: "2023년 SW/컨텐츠분야 벤처스타트업 아카데미 (이노비즈협회 & 명지대학교)", award: "우수상", year: "2024" },
-  { title: "2023 중소벤처기업부 벤처스타트업 아카데미 사업 소감문 경진대회 (명지대학교 SW인재육성사업단)", award: "우수상", year: "2024" },
 ];
 
 const certs = {
   done: ["정보처리기사", "SQLD (SQL 개발자)", "네트워크관리사 2급"],
-  inProgress: ["리눅스마스터 2급 1차 합격"],
+  inProgress: [] as string[],
 };
 
 export default function AboutSection() {
@@ -97,7 +97,7 @@ export default function AboutSection() {
                   ))}
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Pretendard Variable', Pretendard, sans-serif", fontSize: "0.72rem", fontWeight: 600, color: "#868E96", marginBottom: "0.6rem", letterSpacing: "0.05em" }}>취득 중</div>
+                  {certs.inProgress.length > 0 && <div style={{ fontFamily: "'Pretendard Variable', Pretendard, sans-serif", fontSize: "0.72rem", fontWeight: 600, color: "#868E96", marginBottom: "0.6rem", letterSpacing: "0.05em" }}>취득 중</div>}
                   {certs.inProgress.map((c) => (
                     <div key={c} style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginBottom: "0.4rem" }}>
                       <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#CED4DA", flexShrink: 0 }} />
