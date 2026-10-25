@@ -100,7 +100,19 @@ const projects = [
     performance: "다양한 데이터를 활용해 고객 맞춤형 서비스 설계 경험. 클러스터링 기법 적용 경험 확보.",
   },
   {
-    num: "08", title: "컴퓨터 구조 소프트웨어 구현", category: "System / Low-level", period: "2023",
+    num: "08", title: "분산 구조 기반 보험사 손해 사정 시스템", category: "Backend / Distributed", period: "2023",
+    color: "#495057", bgColor: "#F8F9FA",
+    stack: ["Java", "RMI", "MySQL"],
+    role: "분산 시스템 설계 및 클라이언트-서버 통신 개발",
+    contributions: [
+      "Java RMI를 활용해 서버와 클라이언트 간 분산 처리 구조 구현",
+      "보험 고객, 계약, 보상청구 등 각 기능별 서버를 모듈화하여 설계",
+      "시스템 전체 흐름도와 클래스 다이어그램 작성",
+    ],
+    performance: "분산 환경에서 각 모듈 간 효율적인 통신 설계 경험. 시스템 확장성과 유지보수성 향상 실습.",
+  },
+  {
+    num: "09", title: "컴퓨터 구조 소프트웨어 구현", category: "System / Low-level", period: "2023",
     color: "#495057", bgColor: "#F8F9FA",
     stack: ["Java", "Git"],
     role: "컴퓨터 하드웨어 구조 모델링 및 소프트웨어 구현",
@@ -112,7 +124,7 @@ const projects = [
     performance: "컴퓨터의 논리적 동작 구조를 깊이 있게 학습하고 구현.",
   },
   {
-    num: "09", title: "범죄 데이터 기반 범죄율 예측 모델", category: "AI / Data", period: "2023",
+    num: "10", title: "범죄 데이터 기반 범죄율 예측 모델", category: "AI / Data", period: "2023",
     color: "#0C8599", bgColor: "#E3FAFC",
     stack: ["R", "RStudio", "KNN 알고리즘", "ggplot2"],
     role: "데이터 분석 및 예측 모델 설계",

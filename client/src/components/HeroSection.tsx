@@ -8,7 +8,7 @@ const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663648231466/5XNBhS
 const PROFILE_IMG = "/profile_98448890.webp";
 
 const stats = [
-  { num: "9", label: "프로젝트" },
+  { num: "10", label: "프로젝트" },
   { num: "2", label: "수상" },
   { num: "3", label: "자격증" },
   { num: "2026", label: "취업 준비 중" },
