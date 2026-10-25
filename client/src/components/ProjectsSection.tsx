@@ -60,7 +60,7 @@ const projects = [
     performance: "빌드와 배포 자동화, 보안 설정을 포함한 운영 환경 전체를 직접 구성하고 운영.",
   },
   {
-    num: "05", title: "중고차 거래 서비스 (TrustRide, Spring Legacy)", category: "Backend / Full-Stack", period: "2024.12 — 2025.02",
+    num: "05", title: "중고차 거래 서비스 (TrustRide, Spring Legacy)", category: "Backend / Full-Stack", period: "2024.12 — 2025.01",
     color: "#862E9C", bgColor: "#F9F0FF",
     stack: ["Java 11", "Spring MVC (Legacy)", "Spring Security", "MyBatis", "JSP", "MySQL"],
     role: "백엔드 개발과 DB 설계 (주문, 결제, 쿠폰, 차량, 인증)",
@@ -74,7 +74,7 @@ const projects = [
     performance: "트랜잭션과 데이터 정합성을 고려해 중고차 거래 웹 서비스의 백엔드를 구현.",
   },
   {
-    num: "06", title: "생성형 AI 기반 중고차 서비스 (TrustRide AI)", category: "AI / Backend", period: "2025",
+    num: "06", title: "생성형 AI 기반 중고차 서비스 (TrustRide AI)", category: "AI / Backend", period: "2025.01 — 2025.02",
     color: "#0C8599", bgColor: "#E3FAFC",
     stack: ["Python", "FastAPI", "LangChain", "ChromaDB", "Upstage Embedding", "Spring MVC", "RestTemplate", "Swagger"],
     role: "Spring Legacy 버전에 AI 기능 추가: LLM 광고 문구 생성 API 개발, Spring과 FastAPI 연동",
