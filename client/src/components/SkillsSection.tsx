@@ -44,7 +44,7 @@ const skillCategories: Category[] = [
     skills: [
       { name: "Java 11/17", level: "상", desc: "Java 기반 백엔드 개발을 다수 프로젝트에서 주도적으로 수행. 스트림, 람다, 제네릭 등 현대적 Java 문법에 능숙." },
       { name: "Spring Boot", level: "상", desc: "Spring Boot 3.x 기반 REST API 설계 및 구현, 다수 프로젝트에서 메인 백엔드 개발자로 참여." },
-      { name: "Spring Security", level: "중", desc: "커스텀 AuthenticationProvider로 사용자와 관리자 통합 로그인 구현, BCrypt 비밀번호 검증, 로그인 성공과 실패 핸들러 분리." },
+      { name: "Spring Security", level: "하", desc: "Spring Legacy 프로젝트에서 로그인 인증과 비밀번호 암호화 설정을 사용해 본 경험." },
       { name: "JPA / Hibernate", level: "중", desc: "Entity 설계, 연관관계 매핑, JPQL 활용 경험." },
       { name: "Spring MVC", level: "상", desc: "Spring Legacy 및 Boot 환경에서 MVC 패턴 기반 웹 서비스 구조 설계 및 구현 경험." },
       { name: "MyBatis", level: "중", desc: "Spring-MyBatis 연동 CRUD 구현 및 동적 쿼리 작성 경험 보유." },

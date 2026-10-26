@@ -62,16 +62,15 @@ const projects = [
   {
     num: "05", title: "중고차 거래 서비스 (TrustRide, Spring Legacy)", category: "Backend / Full-Stack", period: "2024.12 — 2025.01",
     color: "#862E9C", bgColor: "#F9F0FF",
-    stack: ["Java 11", "Spring MVC (Legacy)", "Spring Security", "MyBatis", "JSP", "MySQL"],
-    role: "백엔드 개발과 DB 설계 (주문, 결제, 쿠폰, 차량, 인증)",
+    stack: ["Java 11", "Spring MVC (Legacy)", "MyBatis", "JSP", "MySQL"],
+    role: "백엔드 개발과 DB 설계 (회원, 차량, 인증)",
     contributions: [
-      "주문, 결제, 배송, 차량 상태 변경을 하나의 트랜잭션으로 묶고 체크 예외까지 롤백되도록 주문 처리 로직 구현",
-      "쿠폰 사용을 조건부 UPDATE 한 문장으로 처리해 중복 사용과 다른 사용자의 쿠폰 사용 방지",
-      "MyBatis resultMap의 collection 매핑과 카테고리 셀프 조인으로 차량과 이미지 목록을 한 번의 쿼리로 조회",
-      "Spring Security 커스텀 AuthenticationProvider로 사용자와 관리자 로그인을 하나의 폼에서 처리하고 BCrypt로 비밀번호 검증",
-      "차량 등록 시 여러 이미지 업로드와 썸네일 지정, UUID 기반 파일명으로 충돌 방지",
+      "MySQL로 회원과 차량 데이터 모델 설계",
+      "Spring MVC와 MyBatis로 회원과 차량 등록, 조회, 수정, 삭제 기능 구현",
+      "로그인과 인증 기능, 사용자별 데이터 접근 제어 로직 구현",
+      "컨트롤러, 서비스, 매퍼 계층으로 나눠 JSP 화면과 연동되는 백엔드 구조 개발",
     ],
-    performance: "트랜잭션과 데이터 정합성을 고려해 중고차 거래 웹 서비스의 백엔드를 구현.",
+    performance: "Spring Legacy 환경에서 중고차 거래 웹 서비스의 백엔드와 DB를 설계하고 구현.",
   },
   {
     num: "06", title: "생성형 AI 기반 중고차 서비스 (TrustRide AI)", category: "AI / Backend", period: "2025.01 — 2025.02",
